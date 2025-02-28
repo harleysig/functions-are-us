@@ -22,10 +22,8 @@ def menu() :
         3. Quit
         """)
         choice = input("Select an option: ")
-        if not choice in "123":
-            print("Please enter 1, 2, or 3")
-        else:
-            return choice
+
+        return choice
 
 # Creates team list and allows user to select home and away team (default is BYU)
 def team(t=1,home_team="BYU") :
@@ -39,9 +37,12 @@ def team(t=1,home_team="BYU") :
     for item in teams:
         print (f"{index}. {item}")
         index += 1
-
-    choiceTeam = int(input("\nWhich team would you like to select (choose a number)? "))-1
-    return teams[choiceTeam]
+    while True :
+        choiceTeam = int(input("\nWhich team would you like to select (choose a number)? "))-1
+        if choiceTeam > 6 or choiceTeam < 0 :
+            print ("Invalid choice. Select a number between 1 and 7.\n")
+        else:
+            return teams[choiceTeam]
 
 # Takes home and away team and generates random scores. Returns W or L for each team
 def play(home_team,away_team,team_dict) :
