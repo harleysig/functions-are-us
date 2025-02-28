@@ -9,7 +9,7 @@ def welcome():
     # Get their name
     sName = input("What is your name? ")
     # Display instructions using their name
-    print("\n" + sName + " here are the instructions for the game simulator.\nFirst select your team. Then select the teams you want to play against.\nYou can play agaisnt as many teams as you'd like.\n")
+    print("\nHello " + sName + ", here are the instructions for the game simulator.\nFirst select your team. Then select the teams you want to play against.\nYou can play agaisnt as many teams as you'd like.\n")
     return sName
 
 def menu():
@@ -24,6 +24,21 @@ def menu():
             print("Please enter 1, 2, or 3")
         else:
             return choice
+          
+# set up list of teams, setup selection of home and opp teams
+def teamSelect() :
+    teams = ["BYU", "ASU", "USU", "UofU", "BSU", "WSU", "WVU"]
+    index = 1
+
+    for item in teams:
+        print (f"{index}. {item}")
+        index = index + 1
+
+    selection = int(input("Select your home team number:\n"))
+    homeTeam = teams[selection-1]
+    teams.remove(homeTeam)
+    print (homeTeam)
+
 
 def calc_score(home_team, away_team):
     home_score = 0
@@ -43,6 +58,8 @@ def calc_score(home_team, away_team):
 
 # Assign their name to a vairiable
 
+teamSelect()
+
 
 def main() : #Main function to call all other functions
     sPlayerName = welcome()
@@ -51,9 +68,14 @@ def main() : #Main function to call all other functions
     while True: 
         choice = menu()
         if choice == "1" : 
+          print("placeholder")
         elif choice == "2" : 
+            home_team=teamSelect()
+            away_team=teamSelect()
+            calc_score(home_team,away_team)
         elif choice == "3" : 
             print(f'Thanks for playing! Goodbye {sPlayerName.capitalize()}!')
+            break
         else :
             print(f'Invalid entry. Please try again.')
 
