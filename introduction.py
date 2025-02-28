@@ -1,6 +1,7 @@
 
 #1. Display an introduction to the game explaining rules and prompt for their name and display that in the welcome message.
 #  Return the name to the main program and store it in variable so it can be used throughout the program.
+import random
 
 def Welcome(): 
     # Welcome user
@@ -23,6 +24,22 @@ def menu():
             print("Please enter 1, 2, or 3")
         else:
             return choice
+
+def calc_score(home_team, away_team):
+    home_score = 0
+    opp_score = 0
+    while home_score == opp_score:
+        home_score = random.randrange(0,10)
+        opp_score = random.randrange(0,10)
+
+    if home_score > opp_score:
+        outcome = "W"
+    else:
+        outcome = "L"
+    
+    print(f"{home_team} scored {home_score}. {away_team} scored {opp_score}.")
+    return outcome
+
 
 # Assign their name to a vairiable
 sPlayerName = Welcome()
