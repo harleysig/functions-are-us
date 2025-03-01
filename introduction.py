@@ -50,10 +50,17 @@ def play(home_team,away_team,team_dict) :
     opScore = random.randint(0,11)
     
     print(f'\nGame Results: {home_team} {homeScore} - {away_team} {opScore}')
+    
+    # if their is a tie generates a random number until they are not the same
+    while homeScore == opScore :
+        homeScore = random.randint(0,11)
+        opScore = random.randint(0,11)
+    
     if homeScore > opScore : 
         print(f'{home_team} wins!\n')
         team_dict[home_team].append("W")
         team_dict[away_team].append("L")
+
     else : 
         print(f'{away_team} wins!\n')
         team_dict[home_team].append("L")
